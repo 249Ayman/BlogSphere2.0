@@ -271,11 +271,11 @@ export default function PostViewPage() {
             </div>
             <div className="flex space-x-4">
               <Link href="/posts/explore">
-                <a className="text-gray-500 hover:text-primary">Explore</a>
+                <span className="text-gray-500 hover:text-primary cursor-pointer">Explore</span>
               </Link>
-              <a href="#" className="text-gray-500 hover:text-primary">About</a>
-              <a href="#" className="text-gray-500 hover:text-primary">Contact</a>
-              <a href="#" className="text-gray-500 hover:text-primary">Privacy</a>
+              <span className="text-gray-500 hover:text-primary cursor-pointer">About</span>
+              <span className="text-gray-500 hover:text-primary cursor-pointer">Contact</span>
+              <span className="text-gray-500 hover:text-primary cursor-pointer">Privacy</span>
             </div>
           </div>
         </div>
