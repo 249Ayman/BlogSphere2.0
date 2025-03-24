@@ -41,7 +41,17 @@ export default function DashboardPage() {
         <main className="p-4 md:p-6">
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+              <div className="flex items-center space-x-2">
+                <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+                <Link href="/">
+                  <Button variant="ghost" size="sm" className="rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Home
+                  </Button>
+                </Link>
+              </div>
               <Link href="/new-post">
                 <Button>
                   <FileText className="mr-2 h-4 w-4" />
@@ -182,9 +192,9 @@ export default function DashboardPage() {
                 {posts && posts.length > 0 && (
                   <div className="mt-4 text-center">
                     <Link href="/posts">
-                      <a className="text-sm font-medium text-primary hover:text-blue-700">
+                      <span className="text-sm font-medium text-primary hover:text-blue-700 cursor-pointer">
                         View all posts
-                      </a>
+                      </span>
                     </Link>
                   </div>
                 )}
@@ -196,7 +206,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-medium text-gray-800">Recent Comments</h2>
                 <Link href="/comments">
-                  <a className="text-sm font-medium text-primary hover:text-blue-700">View all</a>
+                  <span className="text-sm font-medium text-primary hover:text-blue-700 cursor-pointer">View all</span>
                 </Link>
               </div>
               <div className="space-y-4">
@@ -264,9 +274,9 @@ export default function DashboardPage() {
                               {post && (
                                 <div className="mt-1">
                                   <Link href={`/posts/${post.id}`}>
-                                    <a className="text-xs font-medium text-primary hover:text-blue-700">
+                                    <span className="text-xs font-medium text-primary hover:text-blue-700 cursor-pointer">
                                       On: {post.title}
-                                    </a>
+                                    </span>
                                   </Link>
                                 </div>
                               )}

@@ -15,7 +15,7 @@ export default function HomePage() {
               <svg className="w-16 h-16 text-primary mb-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
-              <h1 className="text-5xl font-bold text-gray-800 mb-4">BlogWave</h1>
+              <h1 className="text-5xl font-bold text-gray-800 mb-4">BlogSphere</h1>
               <p className="text-xl text-gray-600 mb-8">
                 A modern platform for writers, bloggers, and content creators. 
                 Share your stories, engage with readers, and grow your audience.
@@ -47,7 +47,7 @@ export default function HomePage() {
                     <div className="flex items-center mb-2">
                       <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-lg">B</div>
                       <div className="ml-4">
-                        <div className="font-medium">BlogWave Editor</div>
+                        <div className="font-medium">BlogSphere Editor</div>
                         <div className="text-sm text-gray-500">Draft</div>
                       </div>
                     </div>
@@ -163,7 +163,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-6">Ready to start your blogging journey?</h2>
           <p className="text-xl mb-8">
-            Join thousands of content creators who are building their audience with BlogWave.
+            Join thousands of content creators who are building their audience with BlogSphere.
           </p>
           {!user && (
             <Link href="/auth">
@@ -184,10 +184,10 @@ export default function HomePage() {
                 <svg className="w-8 h-8 text-primary mr-2" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
-                <span className="text-xl font-semibold text-gray-800">BlogWave</span>
+                <span className="text-xl font-semibold text-gray-800">BlogSphere</span>
               </div>
               <p className="text-gray-600 mt-2">
-                © {new Date().getFullYear()} BlogWave. All rights reserved.
+                © {new Date().getFullYear()} BlogSphere. All rights reserved.
               </p>
             </div>
             <div className="flex space-x-6">
