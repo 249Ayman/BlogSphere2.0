@@ -13,6 +13,7 @@ import NewPostPage from "@/pages/new-post-page";
 import AnalyticsPage from "@/pages/analytics-page";
 import CommentsPage from "@/pages/comments-page";
 import SettingsPage from "@/pages/settings-page";
+import AllPostsPage from "@/pages/all-posts-page";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       {/* Public routes */}
       <Route path="/auth" component={AuthPage} />
       <Route path="/" component={HomePage} />
+      <Route path="/posts/explore" component={AllPostsPage} />
       
       {/* Protected routes */}
       <ProtectedRoute path="/dashboard" component={DashboardPage} />

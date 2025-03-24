@@ -30,6 +30,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
   };
 
   // Posts API
+  // Fetch all posts (public endpoint)
+  app.get("/api/posts/all", async (req, res) => {
+    try {
+      const status = "published"; // Only published posts for public viewing
+      const limit = req.query.limit ? Number(req.query.limit) : 50;
+      const offset = req.query.offset ? Number(req.query.offset) : 0;
+      
+      const posts = await storage.getPosts(undefined, status, limit, offset);
+      res.json(posts);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch posts" });
+    }
+  });
+
+  // Get posts with filtering
   app.get("/api/posts", async (req, res) => {
     try {
       const authorId = req.query.authorId ? Number(req.query.authorId) : undefined;
