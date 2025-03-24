@@ -62,24 +62,22 @@ export default function AllPostsPage() {
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <div className="flex flex-col md:flex-row items-center justify-between mb-8">
             <div>
-              <Link href="/">
-                <a className="flex items-center">
-                  <svg className="w-10 h-10 text-primary mr-2" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                  </svg>
-                  <span className="text-2xl font-bold text-gray-800">BlogWave</span>
-                </a>
+              <Link href="/" className="flex items-center">
+                <svg className="w-10 h-10 text-primary mr-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span className="text-2xl font-bold text-gray-800">BlogWave</span>
               </Link>
             </div>
             <div className="flex items-center mt-4 md:mt-0">
               {user ? (
-                <Link href="/dashboard">
-                  <Button>Dashboard</Button>
-                </Link>
+                <Button asChild>
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
               ) : (
-                <Link href="/auth">
-                  <Button>Sign In</Button>
-                </Link>
+                <Button asChild>
+                  <Link href="/auth">Sign In</Link>
+                </Button>
               )}
             </div>
           </div>

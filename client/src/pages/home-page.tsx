@@ -109,6 +109,55 @@ export default function HomePage() {
         </div>
       </div>
       
+      {/* Explore Posts Section */}
+      <div className="container mx-auto px-4 py-16 max-w-7xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Explore Our Blog</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover thoughtful articles from our talented writers across various categories.
+          </p>
+        </div>
+        <div className="flex justify-center mb-8">
+          <Button asChild size="lg">
+            <Link href="/posts/explore">
+              Explore All Posts
+            </Link>
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="h-48 bg-gradient-to-br from-blue-200 to-blue-100"></div>
+            <div className="p-5">
+              <div className="text-xs font-semibold text-blue-600 uppercase mb-2">Technology</div>
+              <h3 className="text-lg font-bold mb-2">Discover the Latest Tech Trends</h3>
+              <p className="text-gray-600 mb-4 line-clamp-2">
+                Stay updated with the newest developments in the tech world.
+              </p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="h-48 bg-gradient-to-br from-green-200 to-green-100"></div>
+            <div className="p-5">
+              <div className="text-xs font-semibold text-green-600 uppercase mb-2">Lifestyle</div>
+              <h3 className="text-lg font-bold mb-2">Wellness Tips for Busy Professionals</h3>
+              <p className="text-gray-600 mb-4 line-clamp-2">
+                Balance work and wellbeing with our proven strategies.
+              </p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="h-48 bg-gradient-to-br from-purple-200 to-purple-100"></div>
+            <div className="p-5">
+              <div className="text-xs font-semibold text-purple-600 uppercase mb-2">Creativity</div>
+              <h3 className="text-lg font-bold mb-2">Unlock Your Creative Potential</h3>
+              <p className="text-gray-600 mb-4 line-clamp-2">
+                Techniques and inspiration to help you think outside the box.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       {/* Call to Action */}
       <div className="bg-primary text-white py-16">
         <div className="container mx-auto px-4 text-center max-w-3xl">
