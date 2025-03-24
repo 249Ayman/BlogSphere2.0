@@ -155,8 +155,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Explicitly increment post views
+  app.post("/api/posts/:id/view", async (req, res) => {
+    try {
+      const postId = Number(req.params.id);
+      const post = await storage.getPost(postId);
+      
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+      
+      await storage.incrementPostViews(postId);
+      res.status(200).json({ success: true });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to increment view count" });
+    }
+  });
+
   // Comments API
+  // Get comments for a specific post
   app.get("/api/posts/:postId/comments", async (req, res) => {
+    try {
+      const postId = Number(req.params.postId);
+      
+      // Check if post exists
+      const post = await storage.getPost(postId);
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+      
+      // If not authenticated, only approved comments are visible
+      const status = !req.isAuthenticated() ? "approved" : undefined;
+      
+      const comments = await storage.getCommentsByPost(postId, status);
+      res.json(comments);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch comments" });
+    }
+  });
+  
+  // Get comments by post ID (alternative endpoint)
+  app.get("/api/comments/:postId", async (req, res) => {
     try {
       const postId = Number(req.params.postId);
       

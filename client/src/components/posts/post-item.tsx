@@ -106,9 +106,9 @@ export function PostItem({ post, compact = false, onEdit, onDelete }: PostItemPr
           </div>
           <div className="ml-4">
             <Link href={`/posts/${post.id}`}>
-              <a className="text-sm font-medium text-gray-800 hover:text-primary">
+              <span className="text-sm font-medium text-gray-800 hover:text-primary cursor-pointer">
                 {post.title}
-              </a>
+              </span>
             </Link>
             <div className="text-xs text-gray-500 truncate max-w-xs">
               {post.excerpt || post.content.substring(0, 100) + "..."}
@@ -159,18 +159,28 @@ export function PostItem({ post, compact = false, onEdit, onDelete }: PostItemPr
 
   // Render a full card for the post
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden">
+    <div className="bg-white rounded-lg shadow overflow-hidden relative group">
+      {/* Clickable overlay for the entire card except controls */}
+      <Link href={`/posts/${post.id}`}>
+        <div className="absolute inset-0 z-10 cursor-pointer">
+          {/* This div creates a clickable overlay */}
+        </div>
+      </Link>
+      
+      {/* Featured image */}
       {post.featuredImage && (
         <div className="h-40 w-full overflow-hidden bg-gray-200">
           <img
             src={post.featuredImage}
             alt={post.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
       )}
+      
+      {/* Card content */}
       <div className="p-5">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3 relative z-20">
           <Badge variant="outline" className={getStatusClass(post.status)}>
             {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
           </Badge>
@@ -180,17 +190,19 @@ export function PostItem({ post, compact = false, onEdit, onDelete }: PostItemPr
               : "Not published"}
           </div>
         </div>
-        <Link href={`/posts/${post.id}`}>
-          <a className="block">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-primary">
-              {post.title}
-            </h3>
-          </a>
-        </Link>
+        
+        {/* Title with hover effect */}
+        <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors duration-200">
+          {post.title}
+        </h3>
+        
+        {/* Excerpt */}
         <p className="text-gray-600 mb-4 line-clamp-3">
           {post.excerpt || post.content.substring(0, 150) + "..."}
         </p>
-        <div className="flex items-center justify-between">
+        
+        {/* Footer with stats and controls */}
+        <div className="flex items-center justify-between relative z-20">
           <div className="flex items-center space-x-4 text-sm text-gray-500">
             <div className="flex items-center">
               <Eye className="h-4 w-4 mr-1" />
@@ -204,48 +216,52 @@ export function PostItem({ post, compact = false, onEdit, onDelete }: PostItemPr
               )}
             </div>
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={handleEdit}>
-                <Edit className="h-4 w-4 mr-2" /> Edit
-              </DropdownMenuItem>
-              <Link href={`/posts/${post.id}`}>
-                <DropdownMenuItem>
-                  <Eye className="h-4 w-4 mr-2" /> View
+          
+          {/* Controls menu - needs to be above the overlay */}
+          <div className="relative z-30" onClick={(e) => e.stopPropagation()}>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={handleEdit}>
+                  <Edit className="h-4 w-4 mr-2" /> Edit
                 </DropdownMenuItem>
-              </Link>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <DropdownMenuItem className="text-red-600" onSelect={(e) => e.preventDefault()}>
-                    <Trash2 className="h-4 w-4 mr-2" /> Delete
+                <Link href={`/posts/${post.id}`}>
+                  <DropdownMenuItem>
+                    <Eye className="h-4 w-4 mr-2" /> View
                   </DropdownMenuItem>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete your
-                      post and all of its data.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      onClick={handleDelete}
-                      className="bg-red-600 hover:bg-red-700"
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                </Link>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <DropdownMenuItem className="text-red-600" onSelect={(e) => e.preventDefault()}>
+                      <Trash2 className="h-4 w-4 mr-2" /> Delete
+                    </DropdownMenuItem>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. This will permanently delete your
+                        post and all of its data.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={handleDelete}
+                        className="bg-red-600 hover:bg-red-700"
+                      >
+                        Delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </div>
     </div>
