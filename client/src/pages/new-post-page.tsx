@@ -318,7 +318,7 @@ export default function NewPostPage() {
                         <FormControl>
                           <div className="flex">
                             <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                              blogwave.com/posts/
+                              blogsphere.com/posts/
                             </span>
                             <Input
                               className="rounded-l-none"
