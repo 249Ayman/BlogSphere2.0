@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import { AuthProvider } from "@/hooks/use-auth";
 import { ProtectedRoute } from "./lib/protected-route";
+import { Header } from "@/components/layout/header";
 import AuthPage from "@/pages/auth-page";
 import HomePage from "@/pages/home-page";
 import DashboardPage from "@/pages/dashboard-page";
@@ -43,8 +44,13 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <Router />
-        <Toaster />
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-1">
+            <Router />
+          </main>
+          <Toaster />
+        </div>
       </AuthProvider>
     </QueryClientProvider>
   );

@@ -22,10 +22,10 @@ export default function AuthPage() {
   const [location, navigate] = useLocation();
   const [activeTab, setActiveTab] = useState<string>("login");
 
-  // If user is already logged in, redirect to dashboard
+  // If user is already logged in, redirect to home page
   useEffect(() => {
     if (user) {
-      navigate("/dashboard");
+      navigate("/");
     }
   }, [user, navigate]);
 
@@ -169,7 +169,7 @@ export default function AuthPage() {
 
               <TabsContent value="register">
                 <h1 className="text-2xl font-bold text-gray-800 text-center mb-1">Create an account</h1>
-                <p className="text-sm text-gray-600 text-center mb-6">Join BlogWave today</p>
+                <p className="text-sm text-gray-600 text-center mb-6">Join BlogSphere today</p>
 
                 <Form {...registerForm}>
                   <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)} className="space-y-4">
@@ -331,7 +331,7 @@ export default function AuthPage() {
 
         {/* Hero Section */}
         <div className="hidden md:flex flex-col justify-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to BlogWave</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to BlogSphere</h1>
           <p className="text-xl text-gray-600 mb-6">
             A modern platform for writers, bloggers, and content creators
           </p>
