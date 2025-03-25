@@ -1,4 +1,4 @@
-# BlogWave
+# BlogSphere
 
 A full-stack blog platform with authentication, commenting, and analytics features built with React, Express, and TypeScript.
 
