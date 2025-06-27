@@ -1,4 +1,4 @@
-# BlogWave
+# BlogSphere
 
 A full-stack blog platform with authentication, commenting, and analytics features built with React, Express, and TypeScript.
 
@@ -63,5 +63,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Built with [Replit](https://replit.com)
 - UI components from [shadcn/ui](https://ui.shadcn.com)
